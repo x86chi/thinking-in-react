@@ -1,11 +1,18 @@
 import React from "react";
 import { Product } from "../api";
+import { SearchBarProps } from "./SearchBar";
 
-export default function ProductTable({ products }: { products: Product[] }) {
+export default function ProductTable({
+  products,
+  filterText,
+  inStockOnly
+}: { products: Product[] } & SearchBarProps) {
   const rows: JSX.Element[] = [];
   let lastCategory: string;
 
   products.forEach(product => {
+    if (inStockOnly && !product.stocked) return;
+    if (product.name.indexOf(filterText) === -1) return;
     if (product.category !== lastCategory)
       rows.push(
         <ProductCategoryRow
@@ -48,7 +55,7 @@ export const ProductRow = ({
   name,
   price
 }: Omit<Product, "category">) => (
-  <tr>
+  <tr className="product">
     <td style={{ color: stocked ? "black" : "red" }}>{name}</td>
     <td>{price}</td>
   </tr>

@@ -1,12 +1,11 @@
 import React from "react";
 
-export default function SearchBar({
-  filterText,
-  inStockOnly
-}: {
+export type SearchBarProps = {
   filterText: string;
   inStockOnly: boolean;
-}) {
+};
+
+export default function SearchBar({ filterText, inStockOnly }: SearchBarProps) {
   return (
     <form>
       <input type="text" placeholder="Search.." value={filterText} />
