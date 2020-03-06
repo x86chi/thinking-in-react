@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "enzyme";
 
-import ProductTable, { ProductCategoryRow, ProductRow } from "./Products";
+import ProductTable from "./Products";
 import { api } from "../api";
 
 const filterText = "";

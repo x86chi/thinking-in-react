@@ -1,12 +1,11 @@
 import React from "react";
 import { Product } from "../api";
-import { SearchBarProps } from "./SearchBar";
 
 export default function ProductTable({
   products,
   filterText,
   inStockOnly
-}: { products: Product[] } & Omit<SearchBarProps, "setFilterText">) {
+}: { products: Product[] } & { filterText: string; inStockOnly: boolean }) {
   const rows: JSX.Element[] = [];
   let lastCategory: string;
 
