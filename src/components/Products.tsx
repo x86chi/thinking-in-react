@@ -24,7 +24,7 @@ export default function ProductTable({
         stocked={product.stocked}
         name={product.name}
         price={product.price}
-        key={product.category}
+        key={product.name}
       />
     );
     lastCategory = product.category;
