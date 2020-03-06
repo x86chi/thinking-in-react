@@ -10,17 +10,6 @@ const inStockOnly = false;
 const stockedCount = api.filter(({ stocked }) => stocked).length;
 
 describe("ProductTable", () => {
-  test("two <th/> element in thead", () => {
-    expect(
-      render(
-        <ProductTable
-          products={api}
-          filterText={filterText}
-          inStockOnly={inStockOnly}
-        />
-      ).find("thead > tr > th").length
-    ).toBe(2);
-  });
   describe("filter to inStock false", () => {
     const rendered = render(
       <ProductTable
@@ -65,35 +54,3 @@ describe("ProductTable", () => {
   });
 });
 
-describe("Category Header", () => {
-  test("show category text", () => {
-    const category = "Sporting Goods";
-    expect(render(<ProductCategoryRow category={category} />).text()).toBe(
-      category
-    );
-  });
-});
-
-describe("ProductRow", () => {
-  const stocked = render(<ProductRow {...api[0]} />);
-  const notStocked = render(<ProductRow {...api[2]} />);
-  test("Show correctly Product name and Price", () => {
-    expect(stocked.text()).toBe(api[0].name + api[0].price);
-  });
-  test("stocked as show black text", () => {
-    expect(
-      stocked
-        .find("td")
-        .first()
-        .css("color")
-    ).toBe("black");
-  });
-  test("not stocked as show red text", () => {
-    expect(
-      notStocked
-        .find("td")
-        .first()
-        .css("color")
-    ).toBe("red");
-  });
-});
