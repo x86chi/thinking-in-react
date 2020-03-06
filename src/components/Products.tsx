@@ -1,5 +1,5 @@
-import React from "react";
-import { Product } from "../api";
+import React from 'react';
+import { Product } from '../api';
 
 export default function ProductTable({
   products,
@@ -43,9 +43,9 @@ export default function ProductTable({
   );
 }
 
-export const ProductCategoryRow = ({ category }: Pick<Product, "category">) => (
+export const ProductCategoryRow = ({ category }: Pick<Product, 'category'>) => (
   <tr>
-    <th colSpan={2} style={{ fontWeight: "bold" }}>
+    <th colSpan={2} style={{ fontWeight: 'bold' }}>
       {category}
     </th>
   </tr>
@@ -55,9 +55,9 @@ export const ProductRow = ({
   stocked,
   name,
   price
-}: Omit<Product, "category">) => (
+}: Omit<Product, 'category'>) => (
   <tr className="product">
-    <td style={{ color: stocked ? "black" : "red" }}>{name}</td>
+    <td style={{ color: stocked ? 'black' : 'red' }}>{name}</td>
     <td>{price}</td>
   </tr>
 );
