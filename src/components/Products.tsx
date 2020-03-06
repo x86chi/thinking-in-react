@@ -18,6 +18,7 @@ export default function ProductTable({ products }: { products: Product[] }) {
         stocked={product.stocked}
         name={product.name}
         price={product.price}
+        key={product.name}
       />
     );
     lastCategory = product.category;
