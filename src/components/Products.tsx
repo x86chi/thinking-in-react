@@ -6,7 +6,7 @@ export default function ProductTable({
   products,
   filterText,
   inStockOnly
-}: { products: Product[] } & SearchBarProps) {
+}: { products: Product[] } & Omit<SearchBarProps, "setFilterText">) {
   const rows: JSX.Element[] = [];
   let lastCategory: string;
 
