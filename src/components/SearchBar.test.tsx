@@ -10,7 +10,7 @@ describe("SearchBar", () => {
     });
     test('placeholder is "Search.."', () => {
       expect(
-        wrapper.has('input[placeholder="Search.."]').length
+        wrapper.find('input[placeholder="Search.."]').length
       ).toBeGreaterThan(0);
     });
   });
