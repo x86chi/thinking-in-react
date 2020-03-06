@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import "./App.css";
-import ProductTable from "./components/Products";
+import React, { useState } from 'react';
+import './App.css';
+import ProductTable from './components/Products';
 
-import { api } from "./api";
-import SearchBar from "./components/SearchBar";
+import { api } from './api';
+import SearchBar from './components/SearchBar';
 
 function App() {
-  const [filterText, setFilterText] = useState("");
+  const [filterText, setFilterText] = useState('');
   const [inStockOnly, setInStockOnly] = useState(false);
   return (
     <>

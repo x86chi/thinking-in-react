@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction } from 'react';
 
 export type SearchBarProps = {
   filterText: string;
@@ -24,7 +24,7 @@ export default function SearchBar({
       <p>
         <input
           type="checkbox"
-          style={{ marginRight: "1em" }}
+          style={{ marginRight: '1em' }}
           checked={inStockOnly}
           onChange={e => setInStockOnly(!inStockOnly)}
         />

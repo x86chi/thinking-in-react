@@ -1,16 +1,16 @@
-import React from "react";
-import { render } from "enzyme";
+import React from 'react';
+import { render } from 'enzyme';
 
-import ProductTable from "./Products";
-import { api } from "../api";
+import ProductTable from './Products';
+import { api } from '../api';
 
-const filterText = "";
+const filterText = '';
 const inStockOnly = false;
 
 const stockedCount = api.filter(({ stocked }) => stocked).length;
 
-describe("ProductTable", () => {
-  describe("filter to inStock false", () => {
+describe('ProductTable', () => {
+  describe('filter to inStock false', () => {
     const rendered = render(
       <ProductTable
         products={api}
@@ -18,15 +18,15 @@ describe("ProductTable", () => {
         inStockOnly={inStockOnly}
       />
     );
-    test("two <th/> element in tbody", () => {
-      expect(rendered.find("tbody th").length).toBe(2);
+    test('two <th/> element in tbody', () => {
+      expect(rendered.find('tbody th').length).toBe(2);
     });
     test(`${api.length} Product count is equal to api data`, () => {
-      expect(rendered.find(".product").length).toBe(api.length);
+      expect(rendered.find('.product').length).toBe(api.length);
     });
   });
 
-  describe("filter to inStock true", () => {
+  describe('filter to inStock true', () => {
     const rendered = render(
       <ProductTable
         products={api}
@@ -34,11 +34,11 @@ describe("ProductTable", () => {
         inStockOnly={!inStockOnly}
       />
     );
-    test("two <th/> element", () => {
-      expect(rendered.find("tbody > tr > th").length).toBe(2);
+    test('two <th/> element', () => {
+      expect(rendered.find('tbody > tr > th').length).toBe(2);
     });
     test(`${stockedCount} Product`, () => {
-      expect(rendered.find(".product").length).toBe(stockedCount);
+      expect(rendered.find('.product').length).toBe(stockedCount);
     });
   });
 
@@ -50,6 +50,6 @@ describe("ProductTable", () => {
         inStockOnly={false}
       />
     );
-    expect(rendered.find("tr.product").length).toBe(1);
+    expect(rendered.find('tr.product').length).toBe(1);
   });
 });
