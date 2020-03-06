@@ -26,7 +26,7 @@ export default function SearchBar({
           type="checkbox"
           style={{ marginRight: "1em" }}
           checked={inStockOnly}
-          onChange={e => setInStockOnly(e.target.value)}
+          onChange={e => setInStockOnly(!inStockOnly)}
         />
         Only show products in stock
       </p>
