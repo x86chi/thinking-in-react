@@ -19,10 +19,10 @@ describe("ProductTable", () => {
       />
     );
     test("two <th/> element in tbody", () => {
-      expect(rendered.find("tbody > tr > th").length).toBe(2);
+      expect(rendered.find("tbody th").length).toBe(2);
     });
-    test(`${api.length} Product in tbody`, () => {
-      expect(rendered.find("tbody > tr.product").length).toBe(api.length);
+    test(`${api.length} Product count is equal to api data`, () => {
+      expect(rendered.find(".product").length).toBe(api.length);
     });
   });
 
@@ -34,11 +34,11 @@ describe("ProductTable", () => {
         inStockOnly={!inStockOnly}
       />
     );
-    test("two <th/> element in tbody", () => {
+    test("two <th/> element", () => {
       expect(rendered.find("tbody > tr > th").length).toBe(2);
     });
-    test(`${stockedCount} Product in tbody`, () => {
-      expect(rendered.find("tr.product").length).toBe(stockedCount);
+    test(`${stockedCount} Product`, () => {
+      expect(rendered.find(".product").length).toBe(stockedCount);
     });
   });
 
@@ -53,4 +53,3 @@ describe("ProductTable", () => {
     expect(rendered.find("tr.product").length).toBe(1);
   });
 });
-
