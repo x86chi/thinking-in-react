@@ -48,7 +48,9 @@ export default function ProductTable({
 }
 
 const ProductCategoryRow = ({ category }: Pick<Product, "category">) => (
-  <span style={{ fontWeight: "bold" }}>{category}</span>
+  <th colSpan="2" style={{ fontWeight: "bold" }}>
+    {category}
+  </th>
 );
 
 const ProductRow = ({ stocked, name, price }: Omit<Product, "category">) => (
