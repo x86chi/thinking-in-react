@@ -8,7 +8,7 @@ import SearchBar from "./components/SearchBar";
 function App() {
   return (
     <>
-      <SearchBar />
+      <SearchBar filterText="" inStockOnly={false} />
       <ProductTable products={api} />
     </>
   );

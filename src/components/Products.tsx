@@ -38,7 +38,7 @@ export default function ProductTable({ products }: { products: Product[] }) {
 }
 
 export const ProductCategoryRow = ({ category }: Pick<Product, "category">) => (
-  <th colSpan="2" style={{ fontWeight: "bold" }}>
+  <th colSpan={2} style={{ fontWeight: "bold" }}>
     {category}
   </th>
 );
