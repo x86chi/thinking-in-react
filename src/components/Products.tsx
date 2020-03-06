@@ -1,11 +1,21 @@
 import React from "react";
 import { Product } from "../api";
 
-export default function ProductTable({ products }: { products: Product[] }) {
+export default function ProductTable({
+  products,
+  filterText,
+  inStockOnly
+}: {
+  products: Product[];
+  filterText: string;
+  inStockOnly: boolean;
+}) {
   const rows: JSX.Element[] = [];
   let lastCategory: string;
 
   products.forEach(product => {
+    if (product.name.indexOf(filterText) === -1) return;
+    if (inStockOnly && !product.stocked) return;
     if (product.category !== lastCategory)
       rows.push(
         <ProductCategoryRow

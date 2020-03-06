@@ -1,18 +1,33 @@
-import React from "react";
+import React, { SetStateAction } from "react";
 
 export default function SearchBar({
   filterText,
-  inStockOnly
+  inStockOnly,
+  setFilterText,
+  setInStockOnly
 }: {
   filterText: string;
   inStockOnly: boolean;
+  setFilterText: React.Dispatch<SetStateAction<string>>;
+  setInStockOnly: React.Dispatch<SetStateAction<boolean>>;
 }) {
   return (
     <form>
-      <input type="text" placeholder="Search.." value={filterText} />
+      <input
+        type="text"
+        placeholder="Search.."
+        value={filterText}
+        onChange={e => {
+          setFilterText(e.target.value);
+        }}
+      />
       <p>
-        <input type="checkbox" checked={inStockOnly} /> Only show products in
-        stock
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={e => setInStockOnly(!inStockOnly)}
+        />{" "}
+        Only show products in stock
       </p>
     </form>
   );
