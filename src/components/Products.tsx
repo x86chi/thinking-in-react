@@ -37,13 +37,17 @@ export default function ProductTable({ products }: { products: Product[] }) {
   );
 }
 
-const ProductCategoryRow = ({ category }: Pick<Product, "category">) => (
+export const ProductCategoryRow = ({ category }: Pick<Product, "category">) => (
   <th colSpan="2" style={{ fontWeight: "bold" }}>
     {category}
   </th>
 );
 
-const ProductRow = ({ stocked, name, price }: Omit<Product, "category">) => (
+export const ProductRow = ({
+  stocked,
+  name,
+  price
+}: Omit<Product, "category">) => (
   <tr>
     <td style={{ color: stocked ? "black" : "red" }}>{name}</td>
     <td>{price}</td>
