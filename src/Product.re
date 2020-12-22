@@ -20,7 +20,7 @@ module CategoryRow = {
 
 module Table = {
   [@react.component]
-  let make = (~products: array(Mock.product)) => {
+  let make = (~products: array(Mock.product), ~filterText, ~inStockOnly) => {
     let index = ref(-1);
     let rows =
       products
@@ -29,7 +29,14 @@ module Table = {
           index := index^ + 1;
           let {category, name: key} = product;
 
-          if (product.category !== lastCategory) {
+          let isFilterTarget =
+            filterText->String.length > 0
+            && !product.name->Js.String2.includes(filterText);
+          let isOutOfStck = inStockOnly && !product.stocked;
+
+          if (isFilterTarget || isOutOfStck) {
+            React.string("");
+          } else if (product.category !== lastCategory) {
             <React.Fragment key>
               <CategoryRow category key />
               <Row product />
@@ -54,11 +61,11 @@ module Table = {
 
 module SearchBar = {
   [@react.component]
-  let make = () => {
+  let make = (~filterText, ~inStockOnly) => {
     <form>
-      <input type_="text" placeholder="Search..." />
+      <input type_="text" placeholder="Search..." value=filterText />
       <p>
-        <input type_="checkbox" />
+        <input type_="checkbox" checked=inStockOnly />
         {React.string(" Only show products in stock")}
       </p>
     </form>;
@@ -68,6 +75,12 @@ module SearchBar = {
 module Filterable = {
   [@react.component]
   let make = (~products) => {
-    <div> <SearchBar /> <Table products /> </div>;
+    let (filterText, _) = React.useState(_ => "");
+    let (inStockOnly, _) = React.useState(_ => false);
+
+    <div>
+      <SearchBar filterText inStockOnly />
+      <Table filterText inStockOnly products />
+    </div>;
   };
 };
