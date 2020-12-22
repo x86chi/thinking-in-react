@@ -7,6 +7,6 @@
 // time through the examples later.
 
 ReactDOMRe.render(
-  <div> {React.string("Hello!")} </div>,
+  <Product.Filterable products=Mock.proudcts />,
   document##querySelector("main"),
 );
