@@ -61,11 +61,20 @@ module Table = {
 
 module SearchBar = {
   [@react.component]
-  let make = (~filterText, ~inStockOnly) => {
+  let make = (~filterText, ~setText, ~inStockOnly, ~setInStock) => {
     <form>
-      <input type_="text" placeholder="Search..." value=filterText />
+      <input
+        type_="text"
+        placeholder="Search..."
+        value=filterText
+        onChange={event => {setText(ReactEvent.Form.target(event)##value)}}
+      />
       <p>
-        <input type_="checkbox" checked=inStockOnly />
+        <input
+          type_="checkbox"
+          checked=inStockOnly
+          onClick={_ => setInStock(x => !x)}
+        />
         {React.string(" Only show products in stock")}
       </p>
     </form>;
@@ -75,11 +84,11 @@ module SearchBar = {
 module Filterable = {
   [@react.component]
   let make = (~products) => {
-    let (filterText, _) = React.useState(_ => "");
-    let (inStockOnly, _) = React.useState(_ => false);
+    let (filterText, setText) = React.useState(_ => "");
+    let (inStockOnly, setInStock) = React.useState(_ => false);
 
     <div>
-      <SearchBar filterText inStockOnly />
+      <SearchBar filterText setText inStockOnly setInStock />
       <Table filterText inStockOnly products />
     </div>;
   };
