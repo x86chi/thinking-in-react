@@ -61,7 +61,9 @@ module Table = {
 
 module SearchBar = {
   [@react.component]
-  let make = (~filterText, ~setText, ~inStockOnly, ~setInStock) => {
+  let make = (~filterText, ~setText) => {
+    let (inStockOnly, setInStock) = React.useState(_ => false);
+
     <form>
       <input
         type_="text"
@@ -85,11 +87,10 @@ module Filterable = {
   [@react.component]
   let make = (~products) => {
     let (filterText, setText) = React.useState(_ => "");
-    let (inStockOnly, setInStock) = React.useState(_ => false);
 
     <div>
-      <SearchBar filterText setText inStockOnly setInStock />
-      <Table filterText inStockOnly products />
+      <SearchBar filterText setText />
+      <Table filterText="hello" inStockOnly=false products />
     </div>;
   };
 };
